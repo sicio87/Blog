@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+    xmlns:sec="http://www.springframework.org/security/tags">
+<meta id="_csrf" name="_csrf" th:content="${_csrf.token}" type="org.springframework.security.web.csrf.CsrfToken" />
+<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+<head th:include="_attatchments :: head" />
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" th:include ="_menus :: top-menu" />
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" th:include ="_menus :: side-menu"></div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Create User</h1>
+
+			<form role="form" th:action="@{/user/create}" method="post">
+			
+			  <div class="form-group">
+			    <label for="login">Login</label>
+			    <input type="text" class="form-control" id="login" placeholder="Login" th:field="*{form.login}" th:text="Test">
+			  </div>
+			  <div class="form-group">
+			    <label for="name">Name</label>
+			    <input type="text" class="form-control" id="name" placeholder="Name" th:field="*{form.name}">
+			  </div>
+			  <div class="form-group">
+			    <label for="email">Email</label>
+			    <input type="email" class="form-control" id="email" placeholder="Email" th:field="*{form.email}">
+			  </div>
+			  <div class="form-group">
+			    <label for="role">Role</label>
+			  	<select class="form-control">
+				  <option value="ADMIN">ADMIN</option>
+				  <option value="USER">USER</option>
+				</select>
+			  </div>	  
+			  <div class="form-group">
+			    <label for="password">Password</label>
+			    <input type="password" class="form-control" id="password" placeholder="Password" th:field="*{form.password}">
+			  </div>
+			  <div class="form-group">
+			    <label for="passwordRepeated">Repeat password</label>
+			    <input type="password" class="form-control" id="passwordRepeated" placeholder="Repeat password" th:field="*{form.passwordRepeated}">
+			  </div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+
+        </div>
+      </div>
+    </div>
+<th:block th:include="_attatchments :: scripts" />
+</body>
+</html>

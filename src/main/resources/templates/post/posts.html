@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="_attatchments :: head" />
+<body>        
+	<nav class="navbar navbar-inverse navbar-fixed-top" th:include ="_menus :: top-menu" />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" th:include ="_menus :: side-menu"></div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Posts</h1>
+          <a class="btn btn-primary" th:href="@{'/post/create'}">Add posts</a>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Author</th>
+                  <th>Title</th>
+                  <th>Date</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="post : ${posts}">
+                  <td th:text="${post.author.name}">Author</td>
+                  <td th:text="${post.title}">Title</td>
+                  <td th:text="${post.date}">Date</td>
+                  <td><a th:href="@{'/post/edit/' + ${post.id}}">Edit</a></td>
+                  <td><a th:href="@{'/post/delete/' + ${post.id}}">Delete</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+<th:block th:include="_attatchments :: scripts" />
+</body>
+</html>

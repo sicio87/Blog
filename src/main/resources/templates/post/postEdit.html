@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+    xmlns:sec="http://www.springframework.org/security/tags">
+<meta id="_csrf" name="_csrf" th:content="${_csrf.token}" type="org.springframework.security.web.csrf.CsrfToken" />
+<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+<head th:include="_attatchments :: head" />
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" th:include ="_menus :: top-menu" />
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" th:include ="_menus :: side-menu"></div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Create Post</h1>
+
+			<form role="form" th:action="@{/post/edit}" th:object="${post}" method="post">
+
+ 			  <div class="form-group">
+			    <label for="Id">Id</label>
+			    <input type="text" class="form-control" id="id" placeholder="Id" th:field="${post.id}">
+			  </div>			
+			  
+ 			  <div class="form-group">
+			    <label for="Author">Author</label>
+			    <input type="text" class="form-control" id="author" placeholder="Author" th:field="${post.author}">
+			  </div>
+			   
+			  <div class="form-group">
+			    <label for="date">Date</label>
+			    <input type="date" class="form-control" id="date" placeholder="Date" th:field="${post.date}">
+			  </div>
+			  <div class="form-group">
+			    <label for="title">Title</label>
+			    <input type="text" class="form-control" id="title" placeholder="Title" th:field="${post.title}">
+			  </div>
+			  <div class="form-group">
+			    <label for="body">Body</label>
+			    <textarea class="form-control" id="body" placeholder="Body" th:field="${post.body}"></textarea>
+			  </div>
+			  
+			<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+
+        </div>
+      </div>
+    </div>
+<th:block th:include="_attatchments :: scripts" />
+</body>
+</html>

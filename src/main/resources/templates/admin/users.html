@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="_attatchments :: head" />
+<body>        
+	<nav class="navbar navbar-inverse navbar-fixed-top" th:include ="_menus :: top-menu" />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" th:include ="_menus :: side-menu"></div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Users</h1>
+          <a class="btn btn-primary" th:href="@{'/user/create'}">Add user</a>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Login</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="user : ${users}">
+                  <td th:text="${user.name}">Name</td>
+                  <td th:text="${user.login}">Login</td>
+                  <td th:text="${user.email}">Email</td>
+                  <td th:text="${user.role}">Role</td>
+                  <td><a th:href="@{'/user/delete/' + ${user.id}}">Delete</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+<th:block th:include="_attatchments :: scripts" />
+</body>
+</html>

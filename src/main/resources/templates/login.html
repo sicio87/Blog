@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="_attatchments :: head" />
+<body class="login">
+    <div class="container">
+      <form class="form-signin" th:action="@{/login}" method="post">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputLogin" class="sr-only">Email address</label>
+        <input type="text" name="login" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+    </div> <!-- /container -->
+ 
+
+<th:block th:include="_attatchments :: scripts" />
+</body>
+</html>
