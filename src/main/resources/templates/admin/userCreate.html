@@ -32,9 +32,9 @@
 			  <div class="form-group">
 			    <label for="role">Role</label>
 			  	<select class="form-control">
-				  <option value="ADMIN">ADMIN</option>
-				  <option value="USER">USER</option>
+          			<option th:each="role : ${T(eu.karols.domain.Role).values()}" th:value="*{form.role}" th:text="${role.displayName}"></option>
 				</select>
+
 			  </div>	  
 			  <div class="form-group">
 			    <label for="password">Password</label>
