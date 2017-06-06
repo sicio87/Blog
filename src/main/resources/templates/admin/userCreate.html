@@ -19,7 +19,7 @@
 			
 			  <div class="form-group">
 			    <label for="login">Login</label>
-			    <input type="text" class="form-control" id="login" placeholder="Login" th:field="*{form.login}" th:text="Test">
+			    <input type="text" class="form-control" id="login" placeholder="Login" th:field="*{form.login}">
 			  </div>
 			  <div class="form-group">
 			    <label for="name">Name</label>
@@ -31,8 +31,8 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="role">Role</label>
-			  	<select class="form-control">
-          			<option th:each="role : ${T(eu.karols.domain.Role).values()}" th:value="*{form.role}" th:text="${role.displayName}"></option>
+			  	<select class="form-control" th:field="*{form.role}">
+          			<option th:each="role : ${T(eu.karols.domain.Role).values()}" th:selected="${T(eu.karols.domain.Role)}" th:value="${role}" th:text="${role.displayName}"></option>
 				</select>
 
 			  </div>	  

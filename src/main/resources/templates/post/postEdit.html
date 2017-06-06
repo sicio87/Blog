@@ -17,15 +17,8 @@
 
 			<form role="form" th:action="@{/post/edit}" th:object="${post}" method="post">
 
- 			  <div class="form-group">
-			    <label for="Id">Id</label>
-			    <input type="text" class="form-control" id="id" placeholder="Id" th:field="${post.id}">
-			  </div>			
-			  
- 			  <div class="form-group">
-			    <label for="Author">Author</label>
-			    <input type="text" class="form-control" id="author" placeholder="Author" th:field="${post.author}">
-			  </div>
+			  <input type="hidden" th:field="${post.id}">
+			  <input type="hidden" th:field="${post.author}">
 			   
 			  <div class="form-group">
 			    <label for="date">Date</label>
