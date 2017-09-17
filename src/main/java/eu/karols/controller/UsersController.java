@@ -21,7 +21,7 @@ public class UsersController {
         this.userService = userService;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping("/users")
     public ModelAndView getUsersPage() {
         LOGGER.debug("Getting users page");

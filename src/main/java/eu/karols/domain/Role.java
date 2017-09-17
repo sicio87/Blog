@@ -1,8 +1,8 @@
 package eu.karols.domain;
 
 public enum Role {
-    USER("user"),
-    ADMIN("admin");
+	ROLE_USER("USER"),
+	ROLE_ADMIN("ADMIN");
     
     private final String displayName;
 

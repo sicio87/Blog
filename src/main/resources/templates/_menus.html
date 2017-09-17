@@ -11,14 +11,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li sec:authorize="isAuthenticated()"><a href="/user" th:href="@{/user}" sec:authentication="name">Name</a></li>
-            <li sec:authorize="hasRole('ADMIN')"><a href="/users" th:href="@{/users}">Users</a></li>
-            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/users" th:href="@{/users}">Users</a></li>
-<li sec:authorize="isAnonymous()"><a href="/login" th:href="@{/login}">Log in</a></li>
-<li sec:authorize="isAuthenticated()"><a href="/logout" th:href="@{/logout}">Log out</a></li>
-            
-
-            
+            <li sec:authorize="isAuthenticated()"><a href="/user/" th:href="@{/user/}" sec:authentication="name">Name</a></li>
+			<li sec:authorize="isAnonymous()"><a href="/login" th:href="@{/login}">Log in</a></li>
+			<li sec:authorize="isAuthenticated()"><a href="/logout" th:href="@{/logout}">Log out</a></li> 
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -31,8 +26,7 @@
         <div th:fragment="side-menu">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="/" th:href="@{/}">Home <span class="sr-only">(current)</span></a></li>
-            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="@{/users}">Users admin</a></li>
-            <li><a href="/users" th:href="@{/users}">Users</a></li>
-            <li><a href="/posts" th:href="@{/posts}">Posts</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/users" th:href="@{/users}">Users</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN') OR  hasRole('ROLE_USER')"><a href="/posts" th:href="@{/posts}">Posts</a></li>
           </ul>
         </div>

@@ -15,26 +15,18 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Home Page</h1>
 
-
-<div sec:authorize="isAuthenticated()">
-  This content is only shown to authenticated users.
+<div sec:authentication="name">
+    The value of the "name" property of the authentication object should appear here.
 </div>
 <div sec:authorize="hasRole('ROLE_ADMIN')">
-  This content is only shown to administratorsROLE.
-</div>
-<div sec:authorize="hasRole('ADMIN')">
-  This content is only shown to usersADMIN.
-</div>
-<div sec:authorize="isAuthenticated()">
-  This content is only shown to authenticated users.
-</div>
-<div sec:authorize="hasRole('ROLE_ADMIN')">
-  This content is only shown to administrators.
+  hasRole('ROLE_ADMIN')
 </div>
 <div sec:authorize="hasRole('ROLE_USER')">
-  This content is only shown to users.
+  hasRole('ROLE_USER')
 </div>
-<div sec:authorize access="hasRole('ROLE_ADMIN')">Admin Role</div>
+<div sec:authorize="isAuthenticated()">
+  isAuthenticated()
+</div>
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">

@@ -34,14 +34,14 @@ public class PostController {
 		this.userService = userService;
     }
 	
-    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') OR hasAuthority('ROLE_USER')")
     @RequestMapping(value = "/post/create", method = RequestMethod.GET)
     public ModelAndView getPostCreatePage(Model model) {
         LOGGER.debug("Getting post create form");
         return new ModelAndView("post/postCreate", "form", new PostCreateForm());
     }	
 
-    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') OR hasAuthority('ROLE_USER')")
     @RequestMapping(value = "/post/create", method = RequestMethod.POST)
     public String savePost(@ModelAttribute("form") PostCreateForm form){
     	LOGGER.info("Save post " + form.getTitle());
@@ -53,7 +53,7 @@ public class PostController {
         return "redirect:/posts";
     }
     
-	@PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER')")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN') OR hasAuthority('ROLE_USER')")
 	@RequestMapping("/post/delete/{id}")
 	public String deletePost(@PathVariable("id") Long id) {
 		LOGGER.debug("Deleted post " + id);
@@ -61,7 +61,7 @@ public class PostController {
 	    return "redirect:/posts";
 	}
 	
-    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') OR hasAuthority('ROLE_USER')")
     @RequestMapping(value = "/post/edit/{id}", method = RequestMethod.GET)
     public ModelAndView getPostEditPage(Model model, @PathVariable("id") Long id) {
         LOGGER.debug("Getting post edit form");
@@ -69,7 +69,7 @@ public class PostController {
         return new ModelAndView("post/postEdit", "post", postService.findById(id));
     }
     
-    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') OR hasAuthority('ROLE_USER')")
     @RequestMapping(value = "/post/edit", method = RequestMethod.POST)
     public String editPost(@ModelAttribute("form") Post post){
     	LOGGER.info("Edit post " + post.getTitle());

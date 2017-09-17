@@ -21,7 +21,7 @@ public class PostsController {
 		this.postService = postService;
     }
     
-    @PreAuthorize("hasAuthority('ADMIN') OR hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') OR hasAuthority('ROLE_USER')")
     @RequestMapping("/posts")
     public ModelAndView getPostsPage() {
         LOGGER.debug("Getting posts page");
